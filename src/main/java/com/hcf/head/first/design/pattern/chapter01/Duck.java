@@ -10,6 +10,10 @@ public abstract class Duck {
         System.out.println("游泳");
     }
 
+    protected void fly(){
+        System.out.println("飞翔");
+    }
+
     protected abstract void display();
 
 
