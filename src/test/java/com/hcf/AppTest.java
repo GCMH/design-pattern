@@ -1,4 +1,4 @@
-package com.hcf.;
+package com.hcf;
 
 import static org.junit.Assert.assertTrue;
 
