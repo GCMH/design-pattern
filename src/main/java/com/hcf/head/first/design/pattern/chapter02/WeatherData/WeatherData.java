@@ -18,17 +18,18 @@ public class WeatherData implements Subject {
     private float pressure;
 
     public WeatherData() {
-
+        observerList = new LinkedList<>();
     }
 
     public void measurementsChanged() {
-        observerList = new LinkedList<>();
+        notifyObservers();
     }
 
     public void setMeasurements(float temperature, float humidity, float pressure) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.pressure = pressure;
+        measurementsChanged();
     }
 
     @Override
