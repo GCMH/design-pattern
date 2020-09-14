@@ -1,14 +1,16 @@
 package com.hcf.head.first.design.pattern.chapter02.display.impl;
 
+import com.hcf.head.first.design.pattern.chapter02.WeatherData.WeatherData;
 import com.hcf.head.first.design.pattern.chapter02.display.DisplayElement;
-import com.hcf.head.first.design.pattern.chapter02.observer.Observer;
-import com.hcf.head.first.design.pattern.chapter02.subject.Subject;
 import lombok.Data;
+
+import java.util.Observable;
+import java.util.Observer;
 
 @Data
 public class HeatIndex implements DisplayElement, Observer {
 
-    private Subject subject;
+    private Observable subject;
 
     private float temperature;
     private float humidity;
@@ -16,9 +18,9 @@ public class HeatIndex implements DisplayElement, Observer {
 
     private float heatIndex;
 
-    public HeatIndex(Subject subject) {
+    public HeatIndex(Observable subject) {
         this.subject = subject;
-        this.subject.registerObserver(this);
+        this.subject.addObserver(this);
     }
 
     @Override
@@ -27,15 +29,19 @@ public class HeatIndex implements DisplayElement, Observer {
     }
 
     @Override
-    public void update(float temperature, float humidity, float pressure) {
-        this.heatIndex = temperature / 2 + humidity + 1 + temperature - 1;
-        display();
-    }
-
-    @Override
     public String toString() {
         return "HeatIndex{" +
                 heatIndex +
                 '}';
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        WeatherData weatherData = (WeatherData) o;
+
+        this.heatIndex = weatherData.getTemperature() / 2 +
+                weatherData.getHumidity() + 1 +
+                weatherData.getTemperature() - 1;
+        display();
     }
 }

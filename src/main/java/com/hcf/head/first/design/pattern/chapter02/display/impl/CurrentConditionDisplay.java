@@ -1,35 +1,30 @@
 package com.hcf.head.first.design.pattern.chapter02.display.impl;
 
+import com.hcf.head.first.design.pattern.chapter02.WeatherData.WeatherData;
 import com.hcf.head.first.design.pattern.chapter02.display.DisplayElement;
-import com.hcf.head.first.design.pattern.chapter02.observer.Observer;
 import com.hcf.head.first.design.pattern.chapter02.subject.Subject;
 import lombok.Data;
+
+import java.util.Observable;
+import java.util.Observer;
 
 @Data
 public class CurrentConditionDisplay implements DisplayElement, Observer {
 
-    private Subject subject;
+    private Observable subject;
 
     private float temperature;
     private float humidity;
     private float pressure;
 
-    public CurrentConditionDisplay(Subject subject) {
+    public CurrentConditionDisplay(Observable subject) {
         this.subject = subject;
-        this.subject.registerObserver(this);
+        this.subject.addObserver(this);
     }
 
     @Override
     public void display() {
         System.out.println(toString());
-    }
-
-    @Override
-    public void update(float temperature, float humidity, float pressure) {
-        this.temperature = temperature;
-        this.humidity = humidity;
-        this.pressure = pressure;
-        display();
     }
 
     @Override
@@ -39,5 +34,15 @@ public class CurrentConditionDisplay implements DisplayElement, Observer {
                 ", humidity=" + humidity +
                 ", pressure=" + pressure +
                 '}';
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        WeatherData weatherData = (WeatherData) o;
+
+        this.temperature = weatherData.getTemperature();
+        this.humidity = weatherData.getHumidity();
+        this.pressure = weatherData.getPressure();
+        display();
     }
 }
