@@ -8,7 +8,8 @@ import java.math.BigDecimal;
 @Data
 public class HouseBlend extends Beverage {
     @Override
-    protected BigDecimal cost() {
-        return null;
+    public BigDecimal cost() {
+        BigDecimal cost = super.cost();
+        return cost.add(new BigDecimal(20));
     }
 }
