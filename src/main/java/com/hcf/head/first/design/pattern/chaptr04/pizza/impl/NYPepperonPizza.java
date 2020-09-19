@@ -2,24 +2,24 @@ package com.hcf.head.first.design.pattern.chaptr04.pizza.impl;
 
 import com.hcf.head.first.design.pattern.chaptr04.pizza.Pizza;
 
-public class PepperonPizza extends Pizza {
+public class NYPepperonPizza extends Pizza {
     @Override
     public void prepare() {
-        System.out.println("PepperonPizza:prepare");
+        System.out.println("NYPepperonPizza:prepare");
     }
 
     @Override
     public void bake() {
-        System.out.println("PepperonPizza:bake");
+        System.out.println("NYPepperonPizza:bake");
     }
 
     @Override
     public void cut() {
-        System.out.println("PepperonPizza:cut");
+        System.out.println("NYPepperonPizza:cut");
     }
 
     @Override
     public void box() {
-        System.out.println("PepperonPizza:box");
+        System.out.println("NYPepperonPizza:box");
     }
 }
