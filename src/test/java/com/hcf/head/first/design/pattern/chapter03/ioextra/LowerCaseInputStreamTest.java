@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 public class LowerCaseInputStreamTest {
 
     @Test
-    public void should_output_lower_case_when_read_file_content() throws IOException {
+    public void should_input_lower_case_when_read_file_content() throws IOException {
         String fileName = "temp.txt";
         String inputContent = "Hello World!";
         generateFile(fileName, inputContent);
