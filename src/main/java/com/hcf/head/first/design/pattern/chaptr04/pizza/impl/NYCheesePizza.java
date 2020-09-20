@@ -1,17 +1,25 @@
 package com.hcf.head.first.design.pattern.chaptr04.pizza.impl;
 
+import com.hcf.head.first.design.pattern.chaptr04.ingredient.factory.PizzaIngredientFactory;
 import com.hcf.head.first.design.pattern.chaptr04.pizza.Pizza;
 
 public class NYCheesePizza extends Pizza {
 
-    public NYCheesePizza() {
-        this.setName("NyCheesePizza");
-        this.setDough("Extra Thick Crust Dough");
-        this.setSauce("Plum Tomato Sauce");
+    private PizzaIngredientFactory pizzaIngredientFactory;
 
-        this.getToppings().add("Shredded Mozzarella Cheese");
+    public NYCheesePizza(PizzaIngredientFactory pizzaIngredientFactory) {
+        this.pizzaIngredientFactory = pizzaIngredientFactory;
     }
 
+
+    @Override
+    public void prepare() {
+        this.setDough(pizzaIngredientFactory.createDough());
+        this.setSauce(pizzaIngredientFactory.createSauce());
+        this.setCheese(pizzaIngredientFactory.createCheese());
+        this.setPepperoni(pizzaIngredientFactory.createPepperoni());
+        this.setClams(pizzaIngredientFactory.createClams());
+    }
 
     @Override
     public void cut() {

@@ -1,5 +1,6 @@
 package com.hcf.head.first.design.pattern.chaptr04.pizza;
 
+import com.hcf.head.first.design.pattern.chaptr04.ingredient.*;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -10,19 +11,19 @@ public abstract class Pizza {
 
     private String name;
 
-    private String dough;
+    private Dough dough;
 
-    private String sauce;
+    private Sauce sauce;
 
-    private List<String> toppings = new ArrayList<>();
+    private List<Veggies> veggies = new ArrayList<>();
 
-    public void prepare() {
-        System.out.println("default prepare");
-        System.out.println("name:" + name + " dough:" + dough + " sauce:" + sauce);
-        System.out.print("toppings:");
-        toppings.stream().forEach(System.out::print);
-        System.out.println();
-    }
+    private Cheese cheese;
+
+    private Pepperoni pepperoni;
+
+    private Clams clams;
+
+    public abstract void prepare();
 
     public void bake() {
         System.out.println("default bake");
