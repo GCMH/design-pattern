@@ -1,11 +1,9 @@
 package com.hcf.head.first.design.pattern.chapter06;
 
 import com.hcf.head.first.design.pattern.chapter06.command.Command;
-import com.hcf.head.first.design.pattern.chapter06.command.impl.LightOffCommand;
-import com.hcf.head.first.design.pattern.chapter06.command.impl.LightOnCommand;
-import com.hcf.head.first.design.pattern.chapter06.command.impl.StereoOffWithCDCommand;
-import com.hcf.head.first.design.pattern.chapter06.command.impl.StereoOnWithCDCommand;
+import com.hcf.head.first.design.pattern.chapter06.command.impl.*;
 import com.hcf.head.first.design.pattern.chapter06.control.RemoteControl;
+import com.hcf.head.first.design.pattern.chapter06.entity.CeilingFan;
 import com.hcf.head.first.design.pattern.chapter06.entity.Light;
 import com.hcf.head.first.design.pattern.chapter06.entity.Stereo;
 
@@ -28,5 +26,25 @@ public class Main {
         remoteControl.offButtonWasPushed(1);
         remoteControl.onButtonWasPushed(1);
         remoteControl.undo();
+
+        CeilingFan ceilingFan = new CeilingFan();
+        Command celingFanOffCommand = new CeilingFanOffCommand(ceilingFan);
+        Command celingFanHgihtCommand = new CeilingFanHightCommand(ceilingFan);
+        remoteControl.setCommand(2, celingFanHgihtCommand, celingFanOffCommand);
+        remoteControl.onButtonWasPushed(2);
+        remoteControl.undo();
+
+
+        Command[] onCommands = {onLight, onStereo};
+        Command[] offCommands = {offLight, offStereo};
+
+        Command ons = new MacroCommand(onCommands);
+        Command offs = new MacroCommand(offCommands);
+
+        remoteControl.setCommand(3, ons, offs);
+
+        remoteControl.onButtonWasPushed(3);
+        remoteControl.undo();
+
     }
 }
