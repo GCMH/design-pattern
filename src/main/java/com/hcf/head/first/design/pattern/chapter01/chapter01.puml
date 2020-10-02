@@ -1,0 +1,60 @@
+@startuml
+
+package 封装飞行行为 <<Rectangle>>{
+    interface FlyBehavior{
+        void fly()
+    }
+
+    class FlyNoWay{
+        void  fly()
+    }
+
+    class FlyWithWings{
+        void fly()
+    }
+
+    class FlyRocketPowered{
+        void fly()
+    }
+
+    FlyBehavior<|..FlyNoWay
+    FlyBehavior<|..FlyWithWings
+    FlyBehavior<|..FlyRocketPowered
+}
+
+package 封装呱呱叫 <<Rectangle>>{
+    interface QuackBehavior{
+        void quack()
+    }
+
+    class MuteQuack{
+        void quack()
+    }
+
+    class Quack{
+        void quack()
+    }
+
+    class Squeak{
+        void quack()
+    }
+
+    QuackBehavior<|..MuteQuack
+    QuackBehavior<|..Quack
+    QuackBehavior<|..Squeak
+}
+
+abstract class Duck{
+    -FlyBehavior flyBehavior
+    -QuackBehavior quackBehavior
+
+    +void performQuack()
+    +void setQuack()
+    +void performFly()
+    +void setFly()
+}
+
+Duck-->FlyBehavior
+Duck-->QuackBehavior
+
+@enduml

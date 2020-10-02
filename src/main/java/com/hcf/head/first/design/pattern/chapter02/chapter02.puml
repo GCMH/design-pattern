@@ -1,0 +1,58 @@
+@startuml
+
+note top of Subject : 主题
+note left of Observer : 观察者
+interface Subject{
+    registerObserver(Observer observer)
+    removeObserver(Observer observer)
+    notifyObserver()
+
+}
+
+class WeatherData{
+    -List<Observer> observers
+
+    registerObserver(Observer observer)
+    removeObserver(Observer observer)
+    notifyObserver()
+}
+
+Subject <|..WeatherData
+
+interface Observer{
+    update()
+}
+
+interface Display{
+    void display()
+}
+
+class CurrentConditionDisplay{
+    void update()
+    void display()
+}
+
+class StatisticsDisplay{
+    void update()
+    void display()
+}
+
+class ThirdPartyDisplay{
+    void update()
+    void display()
+}
+
+Observer<|..CurrentConditionDisplay
+Observer<|..StatisticsDisplay
+Observer<|..ThirdPartyDisplay
+
+Display<|..CurrentConditionDisplay
+Display<|..StatisticsDisplay
+Display<|..ThirdPartyDisplay
+
+Subject-->Observer
+
+
+
+
+@enduml
