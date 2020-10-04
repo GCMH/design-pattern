@@ -1,0 +1,80 @@
+@startuml
+
+
+class Beverage{
+    -String description
+
+    +void getDescription()
+    +void cost()
+}
+
+package 被装饰者 <<Rectangle>>{
+    class HouseBlend{
+        +void cost()
+    }
+
+    class DarkRoast{
+        +void cost()
+    }
+
+    class Espresso{
+        +void cost()
+    }
+
+    class Decaf{
+        +void cost()
+    }
+}
+
+Beverage <|-- HouseBlend
+Beverage <|-- DarkRoast
+Beverage <|-- Espresso
+Beverage <|-- Decaf
+
+
+class CondimentDecorator{
+    +void getDescription()
+}
+
+note left of CondimentDecorator : 装饰者共同父级
+
+Beverage <|-- CondimentDecorator
+
+package 装饰者 <<Rectangle>> {
+    class Milk{
+        -Beverage beverage
+
+        +void cost()
+        +void getDescription()
+    }
+
+    class Whip{
+        -Beverage beverage
+
+        +void cost()
+        +void getDescription()
+    }
+
+    class Mocha{
+        -Beverage beverage
+
+        +void cost()
+        +void getDescription()
+    }
+
+    class Soy{
+        -Beverage beverage
+
+        +void cost()
+        +void getDescription()
+    }
+}
+
+CondimentDecorator <|-- Milk
+CondimentDecorator <|-- Whip
+CondimentDecorator <|-- Mocha
+CondimentDecorator <|-- Soy
+
+note right of 装饰者 : 装饰者持有Beverage可对被装饰者进行层层包装
+
+@enduml

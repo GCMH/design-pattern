@@ -1,0 +1,67 @@
+@startuml
+
+package 工厂方法 <<Rectangle>>{
+    class PizzaStore{
+        +orderPizza(String type)
+        #{abstract}Pizza createPizza()
+    }
+
+    class NYPizzaStore{
+        #{abstract}Pizza createPizza()
+    }
+
+    class JPPizzaStore{
+            #{abstract}Pizza createPizza()
+    }
+
+    PizzaStore <|-- NYPizzaStore
+    PizzaStore <|-- JPPizzaStore
+
+
+
+    class Pizza{
+        +prepare()
+        +bake()
+        +cut()
+        +box()
+    }
+
+
+    package {
+    class CheesePizza{
+
+        }
+
+        class VeggiePizza{
+
+        }
+    }
+
+
+
+    package {
+        class ClamPizza{
+
+        }
+
+        class PepperoniPizza{
+
+        }
+    }
+
+
+
+    Pizza <|-- CheesePizza
+    Pizza <|-- VeggiePizza
+    Pizza <|-- ClamPizza
+    Pizza <|-- PepperoniPizza
+
+
+    NYPizzaStore -left->CheesePizza
+    NYPizzaStore-left->VeggiePizza
+    JPPizzaStore-left->ClamPizza
+    JPPizzaStore-left->PepperoniPizza
+}
+
+
+@enduml
