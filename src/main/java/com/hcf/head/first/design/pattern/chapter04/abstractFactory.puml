@@ -1,0 +1,92 @@
+@startuml
+
+
+
+
+package 抽象工厂 <<Rectangle>>{
+    note right of Client : 客户端只依赖抽象工厂,产品通过抽象工厂创建。
+    note left of AbstractFactory : 工厂只依赖抽象产品。
+    note bottom of 具体产品 : 一组相关的具体产品可与工厂关联，提供创建相互关联对象家族
+    note left of 具体工厂 : 具体工厂实现了不同的产品家族.
+
+
+    interface AbstractFactory{
+        +ProductA createProductA()
+        +ProductB createProductB()
+    }
+
+    package 具体工厂 <<Rectangle>>{
+        class ConcreteFactory1{
+            +ProductA createProductA()
+            +ProductB createProductB()
+        }
+
+        class ConcreteFactory2{
+            +ProductA createProductA()
+            +ProductB createProductB()
+        }
+    }
+
+    AbstractFactory<|..ConcreteFactory1
+    AbstractFactory<|..ConcreteFactory2
+
+    package 抽象产品 <<Rectangle>>{
+        interface ProductA{
+
+        }
+
+        interface ProductB{
+
+        }
+    }
+
+
+    package 具体产品 <<Rectangle>>{
+        class ProductA1{
+
+        }
+
+        class ProductA2{
+
+        }
+    }
+
+    ProductA<|..ProductA1
+    ProductA<|..ProductA2
+
+
+    package 具体产品 <<Rectangle>>{
+        class ProductB1{
+
+        }
+
+        class ProductB2{
+
+        }
+    }
+
+
+    ProductB<|..ProductB1
+    ProductB<|..ProductB2
+
+
+    ConcreteFactory1-right->ProductA1
+    ConcreteFactory1-right->ProductB1
+
+    ConcreteFactory2-right->ProductA2
+    ConcreteFactory2-right->ProductB2
+
+
+    class Client{
+    }
+
+    Client-left->AbstractFactory
+    Client-left->ProductA
+    Client-left->ProductB
+}
+
+
+
+
+
+@enduml
