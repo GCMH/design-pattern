@@ -1,0 +1,64 @@
+@startuml
+
+package 适配器模式 <<Rectangle>>{
+
+    class Client1{
+    }
+
+    interface Target{
+        request()
+    }
+
+    class Adapter{
+    }
+
+    Target<|..Adapter
+
+    class Adaptive{
+    }
+
+    Adapter-right->Adaptive
+    Client1-right->Target
+
+    note bottom of Client1 : 客户只关注对目标接口
+    note bottom of Adapter : 适配器实现目标接口，将行为转换给被适配者执行。
+    note top of Adaptive : 被适配者由适配器持有，执行具体操作
+
+}
+
+
+package 外观模式 <<Rectangle>>{
+
+    class Client2{
+
+    }
+
+
+
+
+    package 复杂的子系统 <<Rectangle>> {
+        class S1{}
+        class S2{}
+        class S3{}
+        class S4{}
+
+        S1--S2
+        S1--S3
+        S2--S3
+        S2--S4
+    }
+
+    class Facade{
+
+    }
+
+     Facade--S1
+     Facade--S2
+
+     Client2-right->Facade
+
+}
+
+
+
+@enduml
