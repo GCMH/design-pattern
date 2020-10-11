@@ -1,22 +1,18 @@
 package com.hcf.head.first.design.pattern.chapter09;
 
-import com.hcf.head.first.design.pattern.chapter09.menu.Menu;
+import com.hcf.head.first.design.pattern.chapter09.menu.MenuComponent;
 
 
 public class Waitress {
 
-    private Menu dinerMenu;
-    private Menu panckeHouseMenu;
+    private MenuComponent menu;
 
-    public Waitress(Menu dinerMenu, Menu panckeHouseMenu) {
-        this.dinerMenu = dinerMenu;
-        this.panckeHouseMenu = panckeHouseMenu;
+    public Waitress(MenuComponent menu) {
+        this.menu = menu;
     }
 
     public void printMenu() {
-
-        foreach(dinerMenu.createIterator());
-        foreach(panckeHouseMenu.createIterator());
+        menu.print();
     }
 
     private void foreach(Iterator iterator){
