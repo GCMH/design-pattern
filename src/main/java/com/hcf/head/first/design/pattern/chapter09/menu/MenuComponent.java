@@ -1,6 +1,8 @@
 package com.hcf.head.first.design.pattern.chapter09.menu;
 
+
 import java.math.BigDecimal;
+import java.util.Iterator;
 
 public abstract class MenuComponent {
 
@@ -29,6 +31,10 @@ public abstract class MenuComponent {
     }
 
     public void print(){
+        throw new UnsupportedOperationException();
+    }
+
+    public Iterator createIterator(){
         throw new UnsupportedOperationException();
     }
 }

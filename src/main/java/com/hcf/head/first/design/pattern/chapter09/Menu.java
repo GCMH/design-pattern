@@ -1,5 +1,6 @@
 package com.hcf.head.first.design.pattern.chapter09;
 
+import com.hcf.head.first.design.pattern.chapter09.iterator.CompositeIterator;
 import com.hcf.head.first.design.pattern.chapter09.menu.MenuComponent;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class Menu extends MenuComponent {
 
-    private String  name;
+    private String name;
 
     private String descript;
 
@@ -36,8 +37,9 @@ public class Menu extends MenuComponent {
 
     @Override
     public void print() {
+        System.out.println(name);
         Iterator<MenuComponent> iterator = components.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             MenuComponent next = iterator.next();
             next.print();
         }
@@ -51,5 +53,10 @@ public class Menu extends MenuComponent {
     @Override
     public String getDescript() {
         return descript;
+    }
+
+    @Override
+    public Iterator createIterator() {
+        return new CompositeIterator(components.iterator());
     }
 }

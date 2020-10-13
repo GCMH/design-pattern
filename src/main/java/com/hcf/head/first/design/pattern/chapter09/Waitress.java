@@ -15,6 +15,14 @@ public class Waitress {
         menu.print();
     }
 
+    public void printAll(){
+        java.util.Iterator iterator = menu.createIterator();
+        while (iterator.hasNext()){
+            MenuComponent next = (MenuComponent)iterator.next();
+            next.print();
+        }
+    }
+
     private void foreach(Iterator iterator){
         while (iterator.hasNext()){
             print((Item) iterator.next());

@@ -22,6 +22,6 @@ public class Main {
         allMenu.add(cafeMenu);
 
         Waitress waitress = new Waitress(allMenu);
-        waitress.printMenu();
+        waitress.printAll();
     }
 }
