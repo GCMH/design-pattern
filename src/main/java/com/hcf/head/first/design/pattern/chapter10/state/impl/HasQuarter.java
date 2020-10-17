@@ -4,7 +4,7 @@ import com.hcf.head.first.design.pattern.chapter10.GumballMachine;
 import com.hcf.head.first.design.pattern.chapter10.state.State;
 
 public class HasQuarter implements State {
-    private GumballMachine gumballMachine;
+    private transient GumballMachine gumballMachine;
 
     public HasQuarter(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;

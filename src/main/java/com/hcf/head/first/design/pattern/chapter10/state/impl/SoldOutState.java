@@ -4,7 +4,7 @@ import com.hcf.head.first.design.pattern.chapter10.GumballMachine;
 import com.hcf.head.first.design.pattern.chapter10.state.State;
 
 public class SoldOutState implements State {
-    GumballMachine gumballMachine;
+    transient GumballMachine gumballMachine;
 
     public SoldOutState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;

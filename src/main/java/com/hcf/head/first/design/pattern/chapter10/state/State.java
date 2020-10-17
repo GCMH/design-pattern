@@ -1,6 +1,8 @@
 package com.hcf.head.first.design.pattern.chapter10.state;
 
-public interface State {
+import java.io.Serializable;
+
+public interface State extends Serializable {
     void insertQuarter();
     void ejectQuarter();
     void trunkCrank();

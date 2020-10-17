@@ -8,8 +8,8 @@ public class GumballMachineTest {
 
 
     @Test
-    public void should_no_quarter_when_insertQuarter_and_trunkCrank() {
-        GumballMachine gumballMachine = new GumballMachine(10);
+    public void should_no_quarter_when_insertQuarter_and_trunkCrank() throws Exception {
+        GumballMachine gumballMachine = new GumballMachine("wh",10);
         gumballMachine.insertQuarter();
         gumballMachine.trunkCrank();
         gumballMachine.dispense();
@@ -18,8 +18,8 @@ public class GumballMachineTest {
     }
 
     @Test
-    public void should_no_quarter_when_trunkCrank() {
-        GumballMachine gumballMachine = new GumballMachine(10);
+    public void should_no_quarter_when_trunkCrank() throws Exception {
+        GumballMachine gumballMachine = new GumballMachine("wh",10);
         gumballMachine.trunkCrank();
         gumballMachine.dispense();
 
@@ -27,8 +27,8 @@ public class GumballMachineTest {
     }
 
     @Test
-    public void should_sold_when_trunkCrank() {
-        GumballMachine gumballMachine = new GumballMachine(1);
+    public void should_sold_when_trunkCrank() throws Exception {
+        GumballMachine gumballMachine = new GumballMachine("wh",1);
         gumballMachine.insertQuarter();
         gumballMachine.trunkCrank();
         gumballMachine.dispense();
