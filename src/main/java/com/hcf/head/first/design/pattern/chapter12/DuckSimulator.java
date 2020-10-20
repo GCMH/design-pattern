@@ -1,13 +1,12 @@
 package com.hcf.head.first.design.pattern.chapter12;
 
-import com.hcf.head.first.design.pattern.chapter01.quack.impl.Quack;
 import com.hcf.head.first.design.pattern.chapter12.adapter.GooseAdapter;
 import com.hcf.head.first.design.pattern.chapter12.conponent.Flock;
 import com.hcf.head.first.design.pattern.chapter12.factory.AbstractFactory;
 import com.hcf.head.first.design.pattern.chapter12.factory.DuckCountFactory;
 import com.hcf.head.first.design.pattern.chapter12.goose.Goose;
+import com.hcf.head.first.design.pattern.chapter12.observer.QuackLogist;
 import com.hcf.head.first.design.pattern.chapter12.quackable.Quackable;
-import com.hcf.head.first.design.pattern.chapter12.quackable.impl.RedheadDuck;
 
 public class DuckSimulator {
 
@@ -40,6 +39,10 @@ public class DuckSimulator {
 
 
         flockDucks.add(reaDucks);
+
+        QuackLogist quackLogist = new QuackLogist();
+        flockDucks.registerObserver(quackLogist);
+
         flockDucks.quack();
 
         System.out.println(QuackCount.getCount());
