@@ -41,3 +41,14 @@ public class Flock implements Quackable {
         observable.notifyObservers();
     }
 }
+
+
+class B extends A {
+    B() {
+    }
+}
+
+
+class A {
+    int x;
+}
